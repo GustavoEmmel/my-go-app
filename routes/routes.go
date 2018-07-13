@@ -1,12 +1,12 @@
 package routes
 
 import (
-	"my-go-app/pkg/controller/person"
 	"net/http"
+	"my-go-app/pkg/controller/person"
 )
 
 func Routes() {
 	http.HandleFunc("/person", person.Person)
-	http.ListenAndServe(":8090", nil)
+	http.ListenAndServe(":8080", nil)
 
 }
