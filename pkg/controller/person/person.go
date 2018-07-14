@@ -5,21 +5,10 @@ import (
 	"fmt"
 	"my-go-app/pkg/repository/person"
 	"my-go-app/pkg/service/file_writer"
+	"github.com/julienschmidt/httprouter"
 )
 
-func Person(w http.ResponseWriter, r *http.Request) {
-
-	switch r.Method {
-	case "GET":
-		listAllPerson(w, r)
-	case "PUT":
-		fmt.Fprintf(w, "PUT PERSON")
-	default:
-		http.Error(w, "Only GET and PUT are allowed", http.StatusMethodNotAllowed)
-	}
-}
-
-func listAllPerson(w http.ResponseWriter, r *http.Request) {
+func GetAllPerson(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	res := person.FindAllPerson()
 	file_writer.WriteJsonFile(res, "teste2.json")
 	fmt.Println(res)
