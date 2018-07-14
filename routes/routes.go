@@ -8,5 +8,4 @@ import (
 func Routes() {
 	http.HandleFunc("/person", person.Person)
 	http.ListenAndServe(":8080", nil)
-
 }
